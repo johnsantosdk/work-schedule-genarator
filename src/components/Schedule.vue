@@ -11,11 +11,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr ref="rowTr">
                         <th scope="row">2020</th>
                         <th scope="row">Airton Vieira dos Santos</th>
                         
                         <td v-for="cycle in cycles.custom[0]._24x24" :key="cycle">{{cycle}}</td>
+                        <TableData />
                     </tr>
                     <tr v-for="functionary in functionaries" :key="functionary.id">
                         <th scope="row">{{ functionary.register }}</th>
@@ -28,10 +29,12 @@
 
 <script>
 import DatesButton from './DatesButton.vue';
+import TableData from './TableData.vue';
 
 export default {
     components: {
-        DatesButton
+        DatesButton,
+        TableData,
     },
     data() {
         return {
@@ -76,18 +79,19 @@ export default {
     },
     created() {
         console.log(this.cycles.custom[0]._24x24[0])
-        let lengthCycle = 31;
-        let rp = lengthCycle / this.cycles.custom[0]._24x24.length;//quantas repeticoes 
+        let lengthCycle = 28;
+        let rp = parseInt(lengthCycle / this.cycles.custom[0]._24x24.length);//quantas repeticoes 
         console.log('inteiro: ',parseInt(rp, 10))
         let md = lengthCycle % this.cycles.custom[0]._24x24.length;//resto para completar os 28
         console.log('resto: ', md)
         let cont = 0;
         let arr = [];
         while(cont < rp) {
-            this.cycles.custom[0]._24x24.forEach( (item) => {
+           cont = cont + 1;
+           this.cycles.custom[0]._24x24.forEach( (item) => {
                 arr.push(item)
             })
-            cont = cont + 1;
+            
         }
         let i = 0;
         while(md > 0) {
@@ -95,7 +99,8 @@ export default {
             md--;
             i++;
         }
-        console.log(arr)
+        console.log(this.$refs)
+        
     }
 
 };
