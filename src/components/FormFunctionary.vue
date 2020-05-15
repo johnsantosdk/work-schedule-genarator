@@ -23,8 +23,6 @@
 </template>
 
 <script>
-// import barramento from '../barramento/barramento.js';
-
 export default {
     data() {
         return {
@@ -45,17 +43,12 @@ export default {
             this.name = ''
             this.cycle = ''
             this.$store.state.functionaries.push(functionary)
-            //eslint-disble-next-line
-            console.log('chamado', functionary)
         }
     }
 }
 </script>
 
 <style>
-/* div.form-employee {
-    width: 400px;
-}     */
 div.btn-small {
     margin-top: 27px;
     width: 100px;

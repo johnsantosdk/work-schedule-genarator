@@ -3,29 +3,16 @@
         <div class="col">     
             <button class="btn-mes-anterior btn btn-outline-secondary" >{{ previousMonth }}</button>
         </div>
-        <!-- <div class="col div-align-content-center" >
-            <input type="date" class="form-control input-date" v-model="fullDate"><button>Data</button>{{ fullDate }}
-        </div> -->
-        <!-- <div class="col-sm-2 input-group mb-3">
-            <input type="date" class="form-control input-date" v-model="fullDate" value="2020-03-12">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" @click="setDate()">Button</button>
-            </div>
-        </div> -->
         <div class="col-sm-1 input-group">
-            <select  class="form-control" v-model="currentMonth" > 
+            <select  class="form-control" v-model="currentMonth" @change="setDate()"> 
                 <option  v-for="month in months" :key="month[2]" :value="month[2]">{{month[0]}}</option>
             </select>
         </div>
         <div class="col-sm-1 input-group">
-            <select  class="form-control">
-                <option value="01">2020</option>
-                <option value="02">2021</option>
-                <option value="03">2022</option>
+            <select  class="form-control" v-model="currentYear" @change="setDate()">
+                <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
             </select>
         </div> 
-        {{  currentMonth === undefined ? ' nao existe' : '  existe' }}
-
         <div class="col">
             <button class="btn-mes-posterior btn btn-outline-secondary " >{{ nextMonth }}</button>
         </div>  
@@ -37,7 +24,7 @@
 export default {
     data() {
         return {
-            fullDate: (new Date()).toUTCString(),
+            currentFullDate: (new Date()).toUTCString(),
             months: [
                 ['janeiro', 'jan','0', '1'],
                 ['fevereiro', 'fev','1', '2'],
@@ -52,7 +39,7 @@ export default {
                 ['novembro', 'nov','10', '11'],
                 ['dezembro', 'dez','11', '12']
             ],
-            monthsTest: [
+            monthsName: [
                 'janeiro',
                 'fevereiro',
                 'março',
@@ -66,27 +53,27 @@ export default {
                 'novembro',
                 'dezembro',
             ],
+            years: ['2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'], 
             currentMonth: Number(new Date().getMonth()),
-            updateMonth: '',
             currentYear: new Date().getFullYear() 
         } 
     },
     computed: {
         previousMonth() {
             let p = Number(this.currentMonth) == 0 ? 11 : Number(this.currentMonth) - 1
-            return this.monthsTest[p]
+            return this.monthsName[p]
             
         },
         nextMonth() {
             let n = Number(this.currentMonth) == 11 ? 0 : Number(this.currentMonth) + 1
-            return this.monthsTest[n]
+            return this.monthsName[n]
         }
     },
     methods: {
         setDate() {
-            const dt = new Date(this.fullDate)
+            const dt = new Date(this.currentYear, this.currentMonth, (new Date()).getDate())
             const date = {
-                fullDate: dt,
+                currentFullDate: dt,
                 day: dt.getDate() + 1,
                 month: dt.getMonth(),
                 year: dt.getFullYear()
@@ -96,7 +83,7 @@ export default {
 
     },
     created() {
-        // console.log(this.currentMonth)
+        // this.setDate()
     }
 }
 </script>

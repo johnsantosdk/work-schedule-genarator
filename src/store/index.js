@@ -12,7 +12,8 @@ export default new Vuex.Store({
             fullDate: '',
             day: '',
             month: '',
-            year: ''
+            year: '',
+            length: ''
         }
     },
     mutations: {
