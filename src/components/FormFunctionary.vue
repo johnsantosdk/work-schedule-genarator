@@ -8,6 +8,12 @@
                 <option value="2">Ciclo M-M-N-F-F (M-Matutino -> Das 07:00 às 13:00, N-Noturno -> Das 19:00 às 07:00, F-Folga)</option>
                 <option value="3">Ciclo M-M-M-M-M-M-F ((M-Matutino -> Das 07:00 às 13:00, F-Folga Somente aos Domingos)</option>
                 <option value="4">Ciclo D-D-D-D-D-F-F (D-Diurno -> Das 08:00 às 17:00, Horário comercial, F-Folga aos Finais de Semana)</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
             </select>
         </div>
         <div class="col-sm-2">
